@@ -88,9 +88,23 @@ var upperCasedCharacters = [
   'Z'
 ];
 
+// Declaring variables for password configuration
+var passLength = "";
+var useUpperCase;
+var useLowerCase;
+var useNumericCharacters;
+var UseSpecialCharacters;
+
 // Function to prompt user for password options
 function getPasswordOptions() {
-  prompt("Please enter a desired password length between 10 and 64.");
+  passLength = (prompt("Please enter a desired password length between 10 and 64."));
+
+  // We need a loop here to make sure that the answer given by the user is between 10 and 64.
+  while (passLength <= 9 || passLength >= 65){
+    alert("ERROR. Invalid length. Password must be between 10 and 64 characters.");
+    passLength = prompt("Please enter a desired password length between 10 and 64.");
+  }
+
   confirm("Click confirm to incluide uppercase characters.");
   confirm("Click confirm to include lowercase letters.");
   confirm("Click confirm to include numeric characters.");
