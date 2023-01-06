@@ -94,22 +94,31 @@ var useUpperCase;
 var useLowerCase;
 var useNumericCharacters;
 var UseSpecialCharacters;
+var passwordCharacters = [];
+var password;
 
-// Function to prompt user for password options
+// Declaring the character select function that will be part of the password option function later.
+function getCharacterSelect() {
+  useUpperCase = confirm("Click confirm to include uppercase characters.");
+  useLowerCase = confirm("Click confirm to include lowercase letters.");
+  useNumericCharacters = confirm("Click confirm to include numeric characters.");
+  UseSpecialCharacters = confirm("click confirm to include special characters.");
+  // We need a check here to make sure the user chooses at least one type of character.
+  if (useUpperCase === false && useLowerCase == false && useNumericCharacters == false && UseSpecialCharacters == false)
+    alert("Error. Please choose at least one character type to include.");
+    getCharacterSelect();
+ }
+
+// Function to prompt user for password options.
 function getPasswordOptions() {
   passLength = (prompt("Please enter a desired password length between 10 and 64."));
-
   // We need a loop here to make sure that the answer given by the user is between 10 and 64.
   while (passLength <= 9 || passLength >= 65){
     alert("ERROR. Invalid length. Password must be between 10 and 64 characters.");
     passLength = prompt("Please enter a desired password length between 10 and 64.");
-  }
-
-  confirm("Click confirm to incluide uppercase characters.");
-  confirm("Click confirm to include lowercase letters.");
-  confirm("Click confirm to include numeric characters.");
-  confirm("click confirm to include special characters.")
+  } getCharacterSelect ()
 }
+
 
 // Function for getting a random element from an array
 function getRandom(arr) {
