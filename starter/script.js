@@ -26,7 +26,7 @@ var useLowerCase;
 var useNumericCharacters;
 var UseSpecialCharacters;
 var passwordCharacters = [];
-var rngPassword;
+var rngPassword = '';
 var typesCount = useUpperCase + useLowerCase + useNumericCharacters + UseSpecialCharacters
 
 // Declaring the character select function that will be part of the password option function later.
@@ -36,9 +36,13 @@ function getCharacterSelect() {
   useNumericCharacters = confirm("Click confirm to include numeric characters.");
   UseSpecialCharacters = confirm("click confirm to include special characters.");
   // We need a check here to make sure the user chooses at least one type of character.
-  if (useUpperCase === false && useLowerCase == false && useNumericCharacters == false && UseSpecialCharacters == false)
+/*   if (useUpperCase === false && useLowerCase == false && useNumericCharacters == false && UseSpecialCharacters == false)
     alert("Error. Please choose at least one character type to include.");
-    getCharacterSelect();
+    useUpperCase = confirm("Click confirm to include uppercase characters.");
+    useLowerCase = confirm("Click confirm to include lowercase letters.");
+    useNumericCharacters = confirm("Click confirm to include numeric characters.");
+    UseSpecialCharacters = confirm("click confirm to include special characters.");
+     */
  }
 
 // Function to prompt user for password options.
@@ -48,9 +52,8 @@ function getPasswordOptions() {
   while (passLength <= 9 || passLength >= 65){
     alert("ERROR. Invalid length. Password must be between 10 and 64 characters.");
     passLength = prompt("Please enter a desired password length between 10 and 64.");
-  } getCharacterSelect ()
+  } 
 }
-
 
 // Function for getting a random element from an array
 function getRandom(arr) {
@@ -58,12 +61,28 @@ function getRandom(arr) {
 }
 
 // Function to generate password with user input
-function generatePassword() {
-  for(let i = 0; i < passLength; i += typesCount) {
+const randomFunc = {
+  lower: getRandomLower,
+  upper: getRandomUpper,
+  number: getRandomNumber,
+  symbol: getRandomSymbol,
+  
+}
+
+var length= +passLength.value;
+
+function generatePassword(lower, upper, number, symbol, length) {
+  const typesCount = lower + upper + number + symbol;
+  const typesArr = [{lower}, {upper}, {number}, {symbol}].filter(item => Object.values(item)[0])
+
+  for(let i = 0; i < length; i += typesCount) {
     typesArr.forEach(type => {
-      const funcName = Object.keys(type) [0]
-  })
+      const funcName = Object.keys(type) [0];
+      rngPassword += randomFunc[funcName]();
+      
+  });
   }
+  console.log(rngPassword);
   }
 
 
@@ -73,7 +92,8 @@ var generateBtn = document.querySelector('#generate');
 // Write password to the #password input
 function writePassword() {
   getPasswordOptions();
-  var password = generatePassword();
+  getCharacterSelect();
+  var password = generatePassword(useLowerCase, useUpperCase, useNumericCharacters, UseSpecialCharacters, passLength);
   var passwordText = document.querySelector('#password');
   passwordText.value = password;
 }
