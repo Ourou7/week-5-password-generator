@@ -51,37 +51,33 @@ function getPasswordOptions() {
   } 
 }
 
-// Function for getting a random element from an array
-function getRandom(arr) {
 
-}
-
-// Function to generate password with user input
+// Object containing the functions to get our characters
 const randomFunc = {
   lower: getRandomLower,
   upper: getRandomUpper,
   number: getRandomNumber,
   symbol: getRandomSymbol,
-  
 }
-
+//Converting string to value for use in function
 var length= +passLength.value;
 
+
+//Here we go! First, we log the choices made at character select into the function.
+//This gives us our "types count", which is how many characters we add at a time.
+//The (TypesArr) section filters out unused types, and is used in the for loop to add random characters to the password string.
+//Password is initially saved as (rngPassword), and is then sliced down to the desired user length.
 function generatePassword(lower, upper, number, symbol, length) {
   const typesCount = lower + upper + number + symbol;
   const typesArr = [{lower}, {upper}, {number}, {symbol}].filter(item => Object.values(item)[0])
-
   for(let i = 0; i < length; i += typesCount) {
     typesArr.forEach(type => {
       const funcName = Object.keys(type) [0];
       rngPassword += randomFunc[funcName]();
-      
   });
   }
-
   const finalPassword = rngPassword.slice(0, length);
   return finalPassword;
-  console.log(finalPassword);
   }
 
 
