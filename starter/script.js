@@ -36,13 +36,9 @@ function getCharacterSelect() {
   useNumericCharacters = confirm("Click confirm to include numeric characters.");
   UseSpecialCharacters = confirm("click confirm to include special characters.");
   // We need a check here to make sure the user chooses at least one type of character.
-/*   if (useUpperCase === false && useLowerCase == false && useNumericCharacters == false && UseSpecialCharacters == false)
+   while (useUpperCase === false && useLowerCase == false && useNumericCharacters == false && UseSpecialCharacters == false){
     alert("Error. Please choose at least one character type to include.");
-    useUpperCase = confirm("Click confirm to include uppercase characters.");
-    useLowerCase = confirm("Click confirm to include lowercase letters.");
-    useNumericCharacters = confirm("Click confirm to include numeric characters.");
-    UseSpecialCharacters = confirm("click confirm to include special characters.");
-     */
+    getCharacterSelect();}
  }
 
 // Function to prompt user for password options.
