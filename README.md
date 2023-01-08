@@ -9,6 +9,7 @@ The password can include special characters.
 ## Credits
 
 w3schools.com as usual, for being a fantastic starting block.
+
 Traversy Media's tutorial on password generators - https://www.youtube.com/watch?v=duNmhKgtcsI.
 
 ---
