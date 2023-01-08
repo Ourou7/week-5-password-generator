@@ -82,7 +82,10 @@ function generatePassword(lower, upper, number, symbol, length) {
       
   });
   }
-  console.log(rngPassword);
+
+  const finalPassword = rngPassword.slice(0, length);
+  return finalPassword;
+  console.log(finalPassword);
   }
 
 
