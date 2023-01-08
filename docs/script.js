@@ -25,7 +25,6 @@ var useUpperCase;
 var useLowerCase;
 var useNumericCharacters;
 var UseSpecialCharacters;
-var passwordCharacters = [];
 var rngPassword = '';
 var typesCount = useUpperCase + useLowerCase + useNumericCharacters + UseSpecialCharacters
 
