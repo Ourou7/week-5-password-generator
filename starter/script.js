@@ -1,92 +1,23 @@
-// Array of special characters to be included in password
-var specialCharacters = [
-  '@',
-  '%',
-  '+',
-  '\\',
-  '/',
-  "'",
-  '!',
-  '#',
-  '$',
-  '^',
-  '?',
-  ':',
-  ',',
-  ')',
-  '(',
-  '}',
-  '{',
-  ']',
-  '[',
-  '~',
-  '-',
-  '_',
-  '.'
-];
+// Function to generate random symbols
+function getRandomSymbol() {
+	const symbols = '!@#$%^&*(){}[]=<>/,.'
+	return symbols[Math.floor(Math.random() * symbols.length)];
+}
 
-// Array of numeric characters to be included in password
-var numericCharacters = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+// Function to generate random numeric characters
+function getRandomNumber() {
+  return String.fromCharCode(Math.floor(Math.random() * 26) + 97)
+}
 
-// Array of lowercase characters to be included in password
-var lowerCasedCharacters = [
-  'a',
-  'b',
-  'c',
-  'd',
-  'e',
-  'f',
-  'g',
-  'h',
-  'i',
-  'j',
-  'k',
-  'l',
-  'm',
-  'n',
-  'o',
-  'p',
-  'q',
-  'r',
-  's',
-  't',
-  'u',
-  'v',
-  'w',
-  'x',
-  'y',
-  'z'
-];
+// Function to generate random lowercase characters
+function getRandomLower() {
+  return String.fromCharCode(Math.floor(Math.random() * 10) + 48)
+}
 
-// Array of uppercase characters to be included in password
-var upperCasedCharacters = [
-  'A',
-  'B',
-  'C',
-  'D',
-  'E',
-  'F',
-  'G',
-  'H',
-  'I',
-  'J',
-  'K',
-  'L',
-  'M',
-  'N',
-  'O',
-  'P',
-  'Q',
-  'R',
-  'S',
-  'T',
-  'U',
-  'V',
-  'W',
-  'X',
-  'Y',
-  'Z'
-];
+// Function to generate random uppercase characters
+function getRandomUpper() {
+	return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
+}
 
 // Declaring variables for password configuration
 var passLength = "";
@@ -95,7 +26,8 @@ var useLowerCase;
 var useNumericCharacters;
 var UseSpecialCharacters;
 var passwordCharacters = [];
-var password;
+var rngPassword;
+var typesCount = useUpperCase + useLowerCase + useNumericCharacters + UseSpecialCharacters
 
 // Declaring the character select function that will be part of the password option function later.
 function getCharacterSelect() {
@@ -127,8 +59,13 @@ function getRandom(arr) {
 
 // Function to generate password with user input
 function generatePassword() {
+  for(let i = 0; i < passLength; i += typesCount) {
+    typesArr.forEach(type => {
+      const funcName = Object.keys(type) [0]
+  })
+  }
+  }
 
-}
 
 // Get references to the #generate element
 var generateBtn = document.querySelector('#generate');
